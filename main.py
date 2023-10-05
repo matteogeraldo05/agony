@@ -2,6 +2,7 @@
 import pyautogui
 import time
 from tkinter import *
+import webbrowser
 from PIL import Image, ImageTk
 
 root=Tk()
@@ -28,6 +29,7 @@ def updateBackgroundColor(index=0):
 
 root.title('CONGRATATATION!!!')
 root.geometry(f"{appWidth}x{appHeight}+{int((computerWidth/2)-(appWidth/2))}+{int((computerHeight/2-(appHeight/2)))}") # center window to make it pretty :33
+root.configure(background="green")
 
 colourCanvas=Canvas(root,bg='black')
 colourCanvas.pack(fill=BOTH, expand=1)
@@ -49,5 +51,17 @@ updateBackgroundColor()
 
 kevinJamesHot = PhotoImage(file="kevinJames.png",)
 kevinJamesHotCanvas = colourCanvas.create_image(appWidth/2, appHeight/5, anchor=CENTER, image=kevinJamesHot)
+
+def linkButtonFunction():
+    webbrowser.open("https://canadacrimeindex.com/crime-severity-index?sort=population&min_population=0&province=")
+
+openLinkButton = Button(root, text = "View Crime Statistics", bd = "20", command = linkButtonFunction) 
+openLinkButton.pack(side = "left") 
+
+def lockButtonFunction():
+    pyautogui.confirm("ASK ABOUT THE LOCKS WHEN YOUR HOMELESS FOR YOUR HOUSE") 
+
+openLinkButton = Button(root, text = "Lock", bd = "20", command = lockButtonFunction) 
+openLinkButton.pack(side = "right") 
 
 root.mainloop()
